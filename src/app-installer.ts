@@ -4,15 +4,16 @@ import * as fs from 'fs'
 import * as os from 'os'
 import * as path from 'path'
 
-const toolName = 'jq'
-
 export async function install(version: string): Promise<void> {
+  const toolName = 'jq'
   const url = getDownloadUrl(version, toolName)
 
+  /* eslint-disable-next-line no-console */
   console.log(`install app called version : ${version} url : ${url}`)
 
   const appPath = await getBinary(toolName, version, url)
 
+  /* eslint-disable-next-line no-console */
   console.log(`${toolName} has been cached at ${appPath}`)
 
   core.addPath(path.dirname(appPath))
